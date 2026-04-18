@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浜烘牸娴嬭瘯 - 鍙戠幇浣犵殑鍔ㄧ墿浜烘牸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563EB;
+            --secondary: #3B82F6;
+            --cta: #F97316;
+            --background: #F8FAFC;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --card-bg: #FFFFFF;
+            --shadow: 0 10px 40px rgba(37, 99, 235, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 寮€濮嬮〉闈?*/
+        .hero {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 60px 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .title {
+            font-family: 'Righteous', cursive;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--cta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 18px 48px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            color: var(--text);
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* 娴嬭瘯椤甸潰 */
+        .test-container {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--cta));
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .question-card {
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .question-text {
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--text);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .option-btn {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: left;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.15);
+        }
+
+        .option-btn.selected {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        /* 棰樼洰鎿嶄綔鎸夐挳 */
+        .question-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .question-actions .btn-primary,
+        .question-actions .btn-secondary {
+            min-width: 140px;
+            padding: 14px 32px;
+        }
+
+        .question-actions .btn-primary:disabled,
+        .question-actions .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .option-btn {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: left;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.15);
+        }
+
+        /* 缁撴灉椤甸潰 */
+        .result-container {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 60px 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .result-emoji {
+            font-size: 8rem;
+            margin-bottom: 20px;
+            animation: bounceIn 0.8s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .result-title {
+            font-family: 'Righteous', cursive;
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--cta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .result-description {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+
+
+        .result-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 30px;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .test-container {
+                padding: 40px 25px;
+            }
+            
+            .question-text {
+                font-size: 1.3rem;
+            }
+            
+            .option-btn {
+                padding: 18px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 寮€濮嬮〉闈?-->
+        <div id="start-page" class="page active">
+            <div class="hero">
+                <h1 class="title">馃惥 缁掔粧浜烘牸娴嬭瘯 馃惥</h1>
+                <p class="subtitle">閫氳繃20閬撹叮鍛虫祴璇曪紝鎺㈢储浣犲唴蹇冪殑鐪熷疄鎬ф牸</p>
+                <button id="start-btn" class="btn-primary">寮€濮嬫祴璇?/button>
+            </div>
+        </div>
+
+        <!-- 娴嬭瘯椤甸潰 -->
+        <div id="test-page" class="page">
+            <div class="test-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="current-question">1</span> / 20
+                </div>
+                
+                <div class="question-card">
+                    <h2 class="question-text" id="question-text"></h2>
+                    <div class="options" id="options"></div>
+                </div>
+                
+                <div class="question-actions">
+                    <button id="prev-btn" class="btn-secondary">涓婁竴棰?/button>
+                    <button id="confirm-btn" class="btn-primary">纭畾</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 缁撴灉椤甸潰 -->
+        <div id="result-page" class="page">
+            <div class="result-container">
+                <div class="result-emoji" id="result-emoji"></div>
+                <h1 class="result-title" id="result-title"></h1>
+                <p class="result-description" id="result-description"></p>
+                
+
+                
+                <div class="result-actions">
+                    <button id="retry-btn" class="btn-secondary">閲嶆柊娴嬭瘯</button>
+                    <button id="share-btn" class="btn-primary">鍒嗕韩缁撴灉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 棰樼洰鏁版嵁
+        const questions = [
+            {
+                question: "鍛ㄦ湯鏈嬪弸涓存椂鏀鹃附瀛?浣犵涓€鍙嶅簲鏄?",
+                options: [
+                    "澶ソ浜?鍙互韬哄簥涓婂埛涓€澶╂墜鏈轰簡",
+                    "鍒嗘瀽瀵规柟鏄笉鏄湁鏇撮噸瑕佺殑浜?鑷繁瀹夋帓澶囬€夎鍒?,
+                    "绔嬪埢鎵惧叾浠栦箰瀛?鍠婂埆浜哄枬閰掓墦娓告垙",
+                    "鎷呭績瀵规柟鏄笉鏄敓鑷繁姘斾簡,鍙嶅鐞㈢（鑱婂ぉ璁板綍"
+                ]
+            },
+            {
+                question: "宸ヤ綔琚悓浜嬬敥閿?浣犱細:",
+                options: [
+                    "鎳掑緱浜?浣嗕笅娆′細鎮勬倓鐣欒瘉鎹?,
+                    "鍐烽潤姊崇悊鏃堕棿閾?閭欢鍚屾鍏ㄥ憳婢勬竻",
+                    "褰撳満澶у０闂甛"杩欓攨浣犵‘瀹氳鎴戣儗?\"",
+                    "鐔鍋氫袱浠芥姤鍛?璇佹槑鑷繁鏇村己"
+                ]
+            },
+            {
+                question: "鍒峰埌璐熼潰鏂伴椈鏃?浣犲鏄?",
+                options: [
+                    "鍒掕蛋,鐪嬭悓瀹犺棰戝洖琛€",
+                    "鐮旂┒浜嬩欢鑳屽悗鐨勯€昏緫鍜屽埄鐩婇摼",
+                    "杞彂缁欐湅鍙嬪悙妲戒袱鍙?鐒跺悗蹇樹簡",
+                    "澶辩湢,鎬濊€冧汉绫讳細涓嶄細姣佺伃"
+                ]
+            },
+            {
+                question: "鑱氫細涓ぇ瀹剁儹璁綘涓嶆噦鐨勮瘽棰?浣犱細:",
+                options: [
+                    "寰瑧鐐瑰ご,绁炴父鍥炲繂鏅氶キ鍚冨暐",
+                    "蹇€熸悳绱㈠叧閿瘝,鍔犲叆璁ㄨ鏃舵姏鍑虹妧鍒╄鐐?,
+                    "绐佺劧璁蹭釜鍐风瑧璇濆己琛屽垏鎹㈣瘽棰?,
+                    "缂╁湪瑙掕惤甯屾湜娌′汉娉ㄦ剰鍒拌嚜宸?
+                ]
+            },
+            {
+                question: "閬囧埌鎻掗槦鐨勪汉,浣犻€氬父浼?",
+                options: [
+                    "榛橀粯缈讳釜鐧界溂,浣嗕笉鍔?,
+                    "鐢ㄤ笉澶т絾鍛ㄥ洿浜鸿兘鍚埌鐨勯煶閲忚\"鎺掗槦浠庡悗闈㈠紑濮嬪摝\"",
+                    "鐩存帴鎷嶅鏂硅偐鑶€:\"鍝ヤ滑鍎?鍚庨潰鎺掗槦鍘籠"",
+                    "鍐呭績鎸ｆ墡涓夌櫨鍥炲悎,鏈€鍚庢唻鍒板唴浼?
+                ]
+            },
+            {
+                question: "鐞嗘兂鍋囨湡妯″紡鏄?",
+                options: [
+                    "瀹堕噷韫?澶栧崠+杩藉墽",
+                    "绮惧績绛栧垝灏忎紬鍐烽棬鏃呰璺嚎",
+                    "鍜屾湅鍙嬬粍鍥㈢柉鐜╀笁澶╀笁澶?,
+                    "鎶ュ悕鎶€鑳藉煿璁/鍏艰亴鎼炲壇涓?
+                ]
+            },
+            {
+                question: "鍙戠幇濂藉弸鐨勬亱浜烘槸\"娴风帇\",浣犱細:",
+                options: [
+                    "鏆楃ず涓ゆ,涓嶅惉灏辩畻浜?,
+                    "鏁寸悊鏃堕棿绾胯瘉鎹?绉佸彂濂藉弸骞堕檮寤鸿鏂规",
+                    "鐩存帴鎷夌兢:\"鏉?浣犱滑涓変釜瀵逛釜璐"",
+                    "绾犵粨\"璇翠簡鍙兘澶卞幓鏈嬪弸,涓嶈鏇寸碂\"鎯冲埌澶寸棝"
+                ]
+            },
+            {
+                question: "鑰佹澘甯冪疆绂昏氨鐨勯澶栦换鍔?浣犲喅瀹?",
+                options: [
+                    "鎱㈡參鍋?鎷栧埌鑰佹澘蹇樿",
+                    "璇勪及鎬т环姣?璋堟潯浠舵垨濠夋嫆",
+                    "鍒楀嚭鐜版湁宸ヤ綔閲忛棶:\"鎮ㄧ湅鐮嶆帀鍝」?\"",
+                    "鍜墮鍋氬畬,鐒跺悗鏇存柊绠€鍘?
+                ]
+            },
+            {
+                question: "鏈嬪弸鍝瘔澶辨亱,浣犻€氬父浼?",
+                options: [
+                    "閫掔焊宸鹃櫔鍧?鍋跺皵璇碶"鍡棷纭疄杩囧垎\"",
+                    "鐞嗘€у垎鏋愬叧绯荤棝鐐?甯甌a鎵炬垚闀跨偣",
+                    "鎷塗a鍘籏TV鍚笺€婂ソ杩愭潵銆?,
+                    "璺熺潃鍝?鍥炲繂鑷繁鏇存儴鐨勭粡鍘?
+                ]
+            },
+            {
+                question: "缃戣喘鍟嗗搧鏈夊皬鐟曠柕,浣犱細:",
+                options: [
+                    "瀚岄夯鐑?鍑戝悎鐢?,
+                    "鐮旂┒娑堣垂鑰呮潈鐩?绀艰矊鑰屽己纭湴瑕佹眰琛ュ伩",
+                    "绔嬪埢瀹㈡湇鐙傝桨婊ョ偢鐩村埌瑙ｅ喅",
+                    "鍐欎竴鍗冨瓧璇勪环,鏈€鍚庡垹鎺夋病鍙?
+                ]
+            },
+            {
+                question: "琚揩鍙傚姞鍥㈠缓,浣犵殑瑙掕壊閫氬父鏄?",
+                options: [
+                    "韬插湪鏍戣崼涓嬬帺鎵嬫満",
+                    "鏆椾腑瑙傚療鍚屼簨鍏崇郴缃?,
+                    "涓诲姩鎻愯鐜╁艾鐨勬父鎴?,
+                    "鍋囪鑵圭棝鎻愬墠婧?
+                ]
+            },
+            {
+                question: "瀛︿範鏂版妧鑳芥椂,浣犲鏄?",
+                options: [
+                    "涓夊ぉ鍚嶾"闅忕紭鍚"",
+                    "鎷嗚В鏂规硶璁?鏁堢巼纰惧帇鏃佷汉",
+                    "瀛﹀埌涓€鍗婂紑濮嬭嚜鍒涙悶绗戠帺娉?,
+                    "鎶ヤ簲涓繘闃剁彮,鍗峰埌涓撲笟绾?
+                ]
+            },
+            {
+                question: "鍚埌鍒汉鍢茬瑧浣犵殑鐖卞ソ,浣犱細:",
+                options: [
+                    "\"鍝?浣犲紑蹇冨氨濂絓"",
+                    "浼橀泤绉戞櫘璇ョ埍濂界殑娣卞眰浠峰€?,
+                    "澶稿紶妯′豢瀵规柟鐖卞ソ骞跺槻绗戝洖鍘?,
+                    "娣卞鍐欓暱鏂囧弽椹?浠呰嚜宸卞彲瑙?
+                ]
+            },
+            {
+                question: "鍛ㄦ湯涓婂崍閱掓潵鍙戠幇鍋滅數浜?浣犵涓€浠朵簨鏄?",
+                options: [
+                    "缁х画鐫″埌鏈夌數",
+                    "鏌ョ淮淇數璇濄€佺敤鍏呯數瀹濈粰璺敱鍣ㄤ緵鐢?,
+                    "鍘诲挅鍟￠椤轰究閫涘叕鍥?,
+                    "鐒﹁檻:鎵嬫満娌＄數鎬庝箞鍔?宸ヤ綔鏂囦欢杩樻病淇濆瓨!"
+                ]
+            },
+            {
+                question: "灏忕粍鍚堜綔鏈変汉鍒掓按,浣犱細:",
+                options: [
+                    "鑷繁鍋氬畬,浣嗕笅娆￠伩寮€杩欎汉",
+                    "鏄庣‘鍒嗗伐骞惰缃埅姝㈡椂闂碄鍏ㄥ憳",
+                    "鍏紑璇碶"X鍚屽鐨勪换鍔℃垜甯綘鍒嗙粰鍚勪綅浜嗗摝\"",
+                    "鐔甯甌a鍋?鐒跺悗鍙戞湅鍙嬪湀鏆楄"
+                ]
+            },
+            {
+                question: "鐪嬪埌\"璐㈠姟鑷敱鏀荤暐\"鏂囩珷,浣犻€氬父:",
+                options: [
+                    "鏀惰棌,鐒跺悗姘歌繙涓嶇湅",
+                    "瀵规瘮鏁版嵁鏉ユ簮,鎬€鐤戞槸骞垮憡",
+                    "杞彂鍒扮兢閲孿"鍜变滑涔熻瘯璇?\"(涓夊ぉ鍚庡繕)",
+                    "璁ょ湡鍋氱瑪璁板苟寮€濮嬪埗瀹氫簲骞磋鍒?
+                ]
+            },
+            {
+                question: "闄岀敓浜哄悜浣犲€熸墜鏈烘墦鐢佃瘽,浣犱細:",
+                options: [
+                    "閫掔粰瀵规柟浣嗙洴鐫€鐢?,
+                    "璇碶"鎴戝府浣犳嫧鍙?寮€鍏嶆彁\"",
+                    "鐖藉揩鍊熷嚭,鐢氳嚦鎻愰啋浠栨敞鎰忛槻楠?,
+                    "鑴戜腑闂繃100涓楠楀満鏅?鍍电‖鎷掔粷"
+                ]
+            },
+            {
+                question: "閲嶅ぇ閫夋嫨鍓?濡傛崲宸ヤ綔),浣犳€?",
+                options: [
+                    "鎶涚‖甯佸喅瀹?,
+                    "鍒桽WOT鍒嗘瀽琛ㄥ挩璇㈣祫娣变汉澹?,
+                    "璺熺潃鎰熻璧?閿欎簡灏卞綋浣撻獙浜虹敓",
+                    "澶辩湢鏌ラ亶鎵€鏈夌浉鍏冲笘瀛?
+                ]
+            },
+            {
+                question: "鏈嬪弸璇碶"浣犳渶杩戣儢浜哱",浣犱細鍥?",
+                options: [
+                    "\"鍡?鑳栫潃鐜╃帺\"",
+                    "\"鏍规嵁BMI鍏紡,鎴戜粛鍦ㄥ仴搴峰尯闂碶"",
+                    "\"浣犲彂鍨嬩篃寰堢壒鍒憿!\"",
+                    "鍥炲绉颁綋閲嶅苟emo涓€鍛?
+                ]
+            },
+            {
+                question: "浣犺涓虹敓娲荤殑鏈川鏄?",
+                options: [
+                    "涓€鍦轰笉蹇呭お璁ょ湡鐨勪綋楠?,
+                    "闇€瑕佹寔缁紭鍖栫殑绯荤粺",
+                    "瀵绘壘蹇箰鐨勮繃绋?,
+                    "鍏冲叧闅捐繃鍏冲叧杩?
+                ]
+            }
+        ];
+
+        // 浜烘牸绫诲瀷鏄犲皠琛?
+        const mapping = [
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '榛勭墰'],
+            ['姣旀牸', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鑺辨灊榧?],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '楦槾鍏?, '姣旀牸', '榛勭墰'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '榛勭墰'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鑺辨灊榧?],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '榛勭墰'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '榛勭墰'],
+            ['娴ｇ唺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
+            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙']
+        ];
+
+        // 浜烘牸鎻忚堪
+        const personalityData = {
+            '鍗＄毊宸存媺': {
+                emoji: '馃Λ',
+                title: '鍗＄毊宸存媺鈥斺€斾經绯绘憜鐑備汉',
+                description: '涓绘墦涓€涓竾浜嬮殢缂?鑳借汉缁濅笉绔?閬囦簨:绠椾簡銆侀兘琛屻€佹病鍏崇郴銆?
+            },
+            '娴ｇ唺': {
+                emoji: '馃',
+                title: '娴ｇ唺鈥斺€斾汉闂存竻閱掑笣',
+                description: '鐪嬬牬涓嶈鐮?鐞嗘櫤鍦ㄧ嚎涓嶆亱鐖辫剳,鍒╃泭寰楀け绠楀緱鏄庢槑鐧界櫧銆?
+            },
+            '姣旀牸': {
+                emoji: '馃悤',
+                title: '姣旀牸鈥斺€斿揩涔愬偦涔愪粩',
+                description: '娌″績娌¤偤娲荤潃涓嶇疮,绗戠偣鏋佷綆,鐑︽伡鑷姩杩囨护,涓绘墦涓€涓紑蹇冭嚦涓娿€?
+            },
+            '鍒虹尙': {
+                emoji: '馃',
+                title: '鍒虹尙鈥斺€旂簿绁炲唴鑰楀疂',
+                description: '鎯冲お澶氱潯澶皯,鍙嶅绾犵粨鑷垜鎷夋壇,鍐呭績鎴忔瘮鐢佃鍓ц繕瓒炽€?
+            },
+            '鐙哥尗': {
+                emoji: '馃惐',
+                title: '鐙哥尗鈥斺€斾笉鏈嶅氨骞蹭緺',
+                description: '缁濅笉濮斿眻鑷繁,鏈変簨鐩存帴寮€鎬?涓绘墦涓€涓笉鍐呰€椼€佷笓澶栬€椼€?
+            },
+            '榛勭墰': {
+                emoji: '馃悅',
+                title: '榛勭墰鈥斺€斿嵎鐜嬪鏂楁壒',
+                description: '鐢熷懡涓嶆伅鍐呭嵎涓嶆,鎼為挶鎼炰簨涓氱涓€,闂蹭笅鏉ヤ細鐒﹁檻銆?
+            },
+            '鑺辨灊榧?: {
+                emoji: '馃悁',
+                title: '鑺辨灊榧犫€斺€旈€忔槑闅愯韩浜?,
+                description: '鑳藉彂鏂囧瓧涓嶈闊?鑳界嚎涓婁笉瑙侀潰,浜哄灏辨兂閬佸湴,绀炬亹鏈綋銆?
+            },
+            '楦槾鍏?: {
+                emoji: '馃',
+                title: '楦槾鍏解€斺€旂嫭鍏蜂竴鏍间緺',
+                description: '鐭涚浘闆嗗悎浣?绋€鏈夌嫭鐗?绁炵浣庤皟,涓嶉福鍒欏凡,涓€楦ｆ儕浜?鐙竴鏃犱簩銆?
+            }
+        };
+
+        // 鍏ㄥ眬鍙橀噺
+        let currentQuestion = 0;
+        let answers = [];
+
+        // 椤甸潰鍔犺浇瀹屾垚鍚庡垵濮嬪寲
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('椤甸潰鍔犺浇瀹屾垚');
+            
+            // 鑾峰彇DOM鍏冪礌
+            const startPage = document.getElementById('start-page');
+            const testPage = document.getElementById('test-page');
+            const resultPage = document.getElementById('result-page');
+            const startBtn = document.getElementById('start-btn');
+            const retryBtn = document.getElementById('retry-btn');
+            const shareBtn = document.getElementById('share-btn');
+            const progressFill = document.getElementById('progress-fill');
+            const currentQuestionSpan = document.getElementById('current-question');
+            const questionText = document.getElementById('question-text');
+            const optionsContainer = document.getElementById('options');
+            const resultEmoji = document.getElementById('result-emoji');
+            const resultTitle = document.getElementById('result-title');
+            const resultDescription = document.getElementById('result-description');
+            const prevBtn = document.getElementById('prev-btn');
+            const confirmBtn = document.getElementById('confirm-btn');
+
+            console.log('寮€濮嬫寜閽?', startBtn);
+            
+            // 褰撳墠閫変腑鐨勯€夐」
+            let selectedOptionIndex = null;
+
+            // 寮€濮嬫祴璇?
+            startBtn.addEventListener('click', function() {
+                console.log('寮€濮嬫祴璇曡鐐瑰嚮');
+                startPage.classList.remove('active');
+                testPage.classList.add('active');
+                currentQuestion = 0;
+                answers = [];
+                selectedOptionIndex = null;
+                displayQuestion();
+            });
+
+            // 涓婁竴棰?
+            prevBtn.addEventListener('click', function() {
+                if (currentQuestion > 0) {
+                    currentQuestion--;
+                    selectedOptionIndex = answers[currentQuestion] ? answers[currentQuestion].charCodeAt(0) - 65 : null;
+                    answers.pop();
+                    displayQuestion();
+                    updateButtons();
+                }
+            });
+
+            // 纭畾鎸夐挳
+            confirmBtn.addEventListener('click', function() {
+                if (selectedOptionIndex !== null) {
+                    answers[currentQuestion] = String.fromCharCode(65 + selectedOptionIndex);
+                    
+                    if (currentQuestion < questions.length - 1) {
+                        currentQuestion++;
+                        selectedOptionIndex = null;
+                        displayQuestion();
+                        updateButtons();
+                    } else {
+                        showResult();
+                    }
+                }
+            });
+
+            // 鏇存柊鎸夐挳鐘舵€?
+            function updateButtons() {
+                // 涓婁竴棰樻寜閽細绗竴棰樻椂绂佺敤
+                prevBtn.disabled = currentQuestion === 0;
+                
+                // 纭畾鎸夐挳锛氭湭閫夋嫨閫夐」鏃剁鐢?
+                confirmBtn.disabled = selectedOptionIndex === null;
+            }
+
+            // 寮€濮嬫祴璇?
+            startBtn.addEventListener('click', function() {
+                console.log('寮€濮嬫祴璇曡鐐瑰嚮');
+                startPage.classList.remove('active');
+                testPage.classList.add('active');
+                currentQuestion = 0;
+                answers = [];
+                displayQuestion();
+            });
+
+            // 閲嶆柊娴嬭瘯
+            retryBtn.addEventListener('click', function() {
+                resultPage.classList.remove('active');
+                startPage.classList.add('active');
+            });
+
+            // 鍒嗕韩缁撴灉
+            shareBtn.addEventListener('click', function() {
+                const personalityType = getPersonalityType(answers);
+                const personality = personalityData[personalityType];
+                const text = `鎴戠殑鍔ㄧ墿浜烘牸鏄? ${personality.emoji} ${personality.title}\n${personality.description}\n\n鏉ユ祴娴嬩綘鐨勫姩鐗╀汉鏍煎惂!`;
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: '鎴戠殑鍔ㄧ墿浜烘牸娴嬭瘯缁撴灉',
+                        text: text,
+                        url: window.location.href
+                    });
+                } else {
+                    navigator.clipboard.writeText(text).then(() => {
+                        alert('缁撴灉宸插鍒跺埌鍓创鏉?');
+                    }).catch(() => {
+                        alert(text);
+                    });
+                }
+            });
+
+            // 鏄剧ず闂
+            function displayQuestion() {
+                const question = questions[currentQuestion];
+                
+                // 鏇存柊杩涘害鏉?
+                const progress = ((currentQuestion) / questions.length) * 100;
+                progressFill.style.width = progress + '%';
+                currentQuestionSpan.textContent = currentQuestion + 1;
+                
+                // 鏄剧ず闂
+                questionText.textContent = question.question;
+                
+                // 娓呯┖閫夐」瀹瑰櫒
+                optionsContainer.innerHTML = '';
+                
+                // 鍒涘缓閫夐」鎸夐挳
+                question.options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.className = 'option-btn';
+                    button.textContent = String.fromCharCode(65 + index) + '. ' + option;
+                    
+                    // 濡傛灉宸茬粡閫夋嫨杩?鏄剧ず閫変腑鐘舵€?
+                    if (selectedOptionIndex === index) {
+                        button.classList.add('selected');
+                    }
+                    
+                    button.addEventListener('click', function() {
+                        selectAnswer(index);
+                    });
+                    optionsContainer.appendChild(button);
+                });
+                
+                updateButtons();
+            }
+
+            // 閫夋嫨绛旀
+            function selectAnswer(index) {
+                selectedOptionIndex = index;
+                
+                // 鏇存柊閫変腑鐘舵€?
+                const allOptions = optionsContainer.querySelectorAll('.option-btn');
+                allOptions.forEach((btn, i) => {
+                    if (i === index) {
+                        btn.classList.add('selected');
+                    } else {
+                        btn.classList.remove('selected');
+                    }
+                });
+                
+                updateButtons();
+            }
+
+            // 鏄剧ず缁撴灉
+            function showResult() {
+                testPage.classList.remove('active');
+                resultPage.classList.add('active');
+                
+                // 璁＄畻浜烘牸绫诲瀷
+                const personalityType = getPersonalityType(answers);
+                const personality = personalityData[personalityType];
+                
+                // 鏄剧ず缁撴灉
+                resultEmoji.textContent = personality.emoji;
+                resultTitle.textContent = personality.title;
+                resultDescription.textContent = personality.description;
+            }
+
+            // 鑾峰彇浜烘牸绫诲瀷
+            function getPersonalityType(answers) {
+                const count = {
+                    "鍗＄毊宸存媺": 0, "娴ｇ唺": 0, "姣旀牸": 0, "鍒虹尙": 0,
+                    "鐙哥尗": 0, "榛勭墰": 0, "鑺辨灊榧?: 0, "楦槾鍏?: 0
+                };
+                
+                answers.forEach((ans, index) => {
+                    const optionIndex = ans.charCodeAt(0) - 65;
+                    const type = mapping[index][optionIndex];
+                    count[type]++;
+                });
+                
+                let maxCount = 0;
+                let maxTypes = [];
+                for (const [type, num] of Object.entries(count)) {
+                    if (num > maxCount) {
+                        maxCount = num;
+                        maxTypes = [type];
+                    } else if (num === maxCount) {
+                        maxTypes.push(type);
+                    }
+                }
+                
+                return maxTypes.length > 1 ? "楦槾鍏? : maxTypes[0];
+            }
+        });
+    </script>
+</body>
+</html>
