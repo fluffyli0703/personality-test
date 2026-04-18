@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>浜烘牸娴嬭瘯 - 鍙戠幇浣犵殑鍔ㄧ墿浜烘牸</title>
+    <title>人格测试 - 发现你的动物人格</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@
             }
         }
 
-        /* 寮€濮嬮〉闈?*/
+        /* 开始页面 */
         .hero {
             background: var(--card-bg);
             border-radius: 24px;
@@ -122,7 +122,7 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* 娴嬭瘯椤甸潰 */
+        /* 测试页面 */
         .test-container {
             background: var(--card-bg);
             border-radius: 24px;
@@ -212,7 +212,7 @@
             box-shadow: 0 5px 20px rgba(37, 99, 235, 0.2);
         }
 
-        /* 棰樼洰鎿嶄綔鎸夐挳 */
+        /* 题目操作按钮 */
         .question-actions {
             display: flex;
             justify-content: space-between;
@@ -262,7 +262,7 @@
             box-shadow: 0 5px 20px rgba(37, 99, 235, 0.15);
         }
 
-        /* 缁撴灉椤甸潰 */
+        /* 结果页面 */
         .result-container {
             background: var(--card-bg);
             border-radius: 24px;
@@ -347,16 +347,16 @@
 </head>
 <body>
     <div class="container">
-        <!-- 寮€濮嬮〉闈?-->
+        <!-- 开始页面 -->
         <div id="start-page" class="page active">
             <div class="hero">
-                <h1 class="title">馃惥 缁掔粧浜烘牸娴嬭瘯 馃惥</h1>
-                <p class="subtitle">閫氳繃20閬撹叮鍛虫祴璇曪紝鎺㈢储浣犲唴蹇冪殑鐪熷疄鎬ф牸</p>
-                <button id="start-btn" class="btn-primary">寮€濮嬫祴璇?/button>
+                <h1 class="title">🐾 绒绒人格测试 🐾</h1>
+                <p class="subtitle">通过20道趣味测试，探索你内心的真实性格</p>
+                <button id="start-btn" class="btn-primary">开始测试</button>
             </div>
         </div>
 
-        <!-- 娴嬭瘯椤甸潰 -->
+        <!-- 测试页面 -->
         <div id="test-page" class="page">
             <div class="test-container">
                 <div class="progress-bar">
@@ -372,13 +372,13 @@
                 </div>
                 
                 <div class="question-actions">
-                    <button id="prev-btn" class="btn-secondary">涓婁竴棰?/button>
-                    <button id="confirm-btn" class="btn-primary">纭畾</button>
+                    <button id="prev-btn" class="btn-secondary">上一题</button>
+                    <button id="confirm-btn" class="btn-primary">确定</button>
                 </div>
             </div>
         </div>
 
-        <!-- 缁撴灉椤甸潰 -->
+        <!-- 结果页面 -->
         <div id="result-page" class="page">
             <div class="result-container">
                 <div class="result-emoji" id="result-emoji"></div>
@@ -388,275 +388,275 @@
 
                 
                 <div class="result-actions">
-                    <button id="retry-btn" class="btn-secondary">閲嶆柊娴嬭瘯</button>
-                    <button id="share-btn" class="btn-primary">鍒嗕韩缁撴灉</button>
+                    <button id="retry-btn" class="btn-secondary">重新测试</button>
+                    <button id="share-btn" class="btn-primary">分享结果</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 棰樼洰鏁版嵁
+        // 题目数据
         const questions = [
             {
-                question: "鍛ㄦ湯鏈嬪弸涓存椂鏀鹃附瀛?浣犵涓€鍙嶅簲鏄?",
+                question: "周末朋友临时放鸽子,你第一反应是:",
                 options: [
-                    "澶ソ浜?鍙互韬哄簥涓婂埛涓€澶╂墜鏈轰簡",
-                    "鍒嗘瀽瀵规柟鏄笉鏄湁鏇撮噸瑕佺殑浜?鑷繁瀹夋帓澶囬€夎鍒?,
-                    "绔嬪埢鎵惧叾浠栦箰瀛?鍠婂埆浜哄枬閰掓墦娓告垙",
-                    "鎷呭績瀵规柟鏄笉鏄敓鑷繁姘斾簡,鍙嶅鐞㈢（鑱婂ぉ璁板綍"
+                    "太好了,可以躺床上刷一天手机了",
+                    "分析对方是不是有更重要的事,自己安排备选计划",
+                    "立刻找其他乐子,喊别人喝酒打游戏",
+                    "担心对方是不是生自己气了,反复琢磨聊天记录"
                 ]
             },
             {
-                question: "宸ヤ綔琚悓浜嬬敥閿?浣犱細:",
+                question: "工作被同事甩锅,你会:",
                 options: [
-                    "鎳掑緱浜?浣嗕笅娆′細鎮勬倓鐣欒瘉鎹?,
-                    "鍐烽潤姊崇悊鏃堕棿閾?閭欢鍚屾鍏ㄥ憳婢勬竻",
-                    "褰撳満澶у０闂甛"杩欓攨浣犵‘瀹氳鎴戣儗?\"",
-                    "鐔鍋氫袱浠芥姤鍛?璇佹槑鑷繁鏇村己"
+                    "懒得争,但下次会悄悄留证据",
+                    "冷静梳理时间链,邮件同步全员澄清",
+                    "当场大声问\"这锅你确定要我背?\"",
+                    "熬夜做两份报告,证明自己更强"
                 ]
             },
             {
-                question: "鍒峰埌璐熼潰鏂伴椈鏃?浣犲鏄?",
+                question: "刷到负面新闻时,你容易:",
                 options: [
-                    "鍒掕蛋,鐪嬭悓瀹犺棰戝洖琛€",
-                    "鐮旂┒浜嬩欢鑳屽悗鐨勯€昏緫鍜屽埄鐩婇摼",
-                    "杞彂缁欐湅鍙嬪悙妲戒袱鍙?鐒跺悗蹇樹簡",
-                    "澶辩湢,鎬濊€冧汉绫讳細涓嶄細姣佺伃"
+                    "划走,看萌宠视频回血",
+                    "研究事件背后的逻辑和利益链",
+                    "转发给朋友吐槽两句,然后忘了",
+                    "失眠,思考人类会不会毁灭"
                 ]
             },
             {
-                question: "鑱氫細涓ぇ瀹剁儹璁綘涓嶆噦鐨勮瘽棰?浣犱細:",
+                question: "聚会中大家热议你不懂的话题,你会:",
                 options: [
-                    "寰瑧鐐瑰ご,绁炴父鍥炲繂鏅氶キ鍚冨暐",
-                    "蹇€熸悳绱㈠叧閿瘝,鍔犲叆璁ㄨ鏃舵姏鍑虹妧鍒╄鐐?,
-                    "绐佺劧璁蹭釜鍐风瑧璇濆己琛屽垏鎹㈣瘽棰?,
-                    "缂╁湪瑙掕惤甯屾湜娌′汉娉ㄦ剰鍒拌嚜宸?
+                    "微笑点头,神游回忆晚饭吃啥",
+                    "快速搜索关键词,加入讨论时抛出犀利观点",
+                    "突然讲个冷笑话强行切换话题",
+                    "缩在角落希望没人注意到自己"
                 ]
             },
             {
-                question: "閬囧埌鎻掗槦鐨勪汉,浣犻€氬父浼?",
+                question: "遇到插队的人,你通常会:",
                 options: [
-                    "榛橀粯缈讳釜鐧界溂,浣嗕笉鍔?,
-                    "鐢ㄤ笉澶т絾鍛ㄥ洿浜鸿兘鍚埌鐨勯煶閲忚\"鎺掗槦浠庡悗闈㈠紑濮嬪摝\"",
-                    "鐩存帴鎷嶅鏂硅偐鑶€:\"鍝ヤ滑鍎?鍚庨潰鎺掗槦鍘籠"",
-                    "鍐呭績鎸ｆ墡涓夌櫨鍥炲悎,鏈€鍚庢唻鍒板唴浼?
+                    "默默翻个白眼,但不动",
+                    "用不大但周围人能听到的音量说\"排队从后面开始哦\"",
+                    "直接拍对方肩膀:\"哥们儿,后面排队去\"",
+                    "内心挣扎三百回合,最后憋到内伤"
                 ]
             },
             {
-                question: "鐞嗘兂鍋囨湡妯″紡鏄?",
+                question: "理想假期模式是:",
                 options: [
-                    "瀹堕噷韫?澶栧崠+杩藉墽",
-                    "绮惧績绛栧垝灏忎紬鍐烽棬鏃呰璺嚎",
-                    "鍜屾湅鍙嬬粍鍥㈢柉鐜╀笁澶╀笁澶?,
-                    "鎶ュ悕鎶€鑳藉煿璁/鍏艰亴鎼炲壇涓?
+                    "家里蹲,外卖+追剧",
+                    "精心策划小众冷门旅行路线",
+                    "和朋友组团疯玩三天三夜",
+                    "报名技能培训课/兼职搞副业"
                 ]
             },
             {
-                question: "鍙戠幇濂藉弸鐨勬亱浜烘槸\"娴风帇\",浣犱細:",
+                question: "发现好友的恋人是\"海王\",你会:",
                 options: [
-                    "鏆楃ず涓ゆ,涓嶅惉灏辩畻浜?,
-                    "鏁寸悊鏃堕棿绾胯瘉鎹?绉佸彂濂藉弸骞堕檮寤鸿鏂规",
-                    "鐩存帴鎷夌兢:\"鏉?浣犱滑涓変釜瀵逛釜璐"",
-                    "绾犵粨\"璇翠簡鍙兘澶卞幓鏈嬪弸,涓嶈鏇寸碂\"鎯冲埌澶寸棝"
+                    "暗示两次,不听就算了",
+                    "整理时间线证据,私发好友并附建议方案",
+                    "直接拉群:\"来,你们三个对个账\"",
+                    "纠结\"说了可能失去朋友,不说更糟\"想到头痛"
                 ]
             },
             {
-                question: "鑰佹澘甯冪疆绂昏氨鐨勯澶栦换鍔?浣犲喅瀹?",
+                question: "老板布置离谱的额外任务,你决定:",
                 options: [
-                    "鎱㈡參鍋?鎷栧埌鑰佹澘蹇樿",
-                    "璇勪及鎬т环姣?璋堟潯浠舵垨濠夋嫆",
-                    "鍒楀嚭鐜版湁宸ヤ綔閲忛棶:\"鎮ㄧ湅鐮嶆帀鍝」?\"",
-                    "鍜墮鍋氬畬,鐒跺悗鏇存柊绠€鍘?
+                    "慢慢做,拖到老板忘记",
+                    "评估性价比,谈条件或婉拒",
+                    "列出现有工作量问:\"您看砍掉哪项?\"",
+                    "咬牙做完,然后更新简历"
                 ]
             },
             {
-                question: "鏈嬪弸鍝瘔澶辨亱,浣犻€氬父浼?",
+                question: "朋友哭诉失恋,你通常会:",
                 options: [
-                    "閫掔焊宸鹃櫔鍧?鍋跺皵璇碶"鍡棷纭疄杩囧垎\"",
-                    "鐞嗘€у垎鏋愬叧绯荤棝鐐?甯甌a鎵炬垚闀跨偣",
-                    "鎷塗a鍘籏TV鍚笺€婂ソ杩愭潵銆?,
-                    "璺熺潃鍝?鍥炲繂鑷繁鏇存儴鐨勭粡鍘?
+                    "递纸巾陪坐,偶尔说\"嗯嗯确实过分\"",
+                    "理性分析关系痛点,帮Ta找成长点",
+                    "拉Ta去KTV吼《好运来》",
+                    "跟着哭,回忆自己更惨的经历"
                 ]
             },
             {
-                question: "缃戣喘鍟嗗搧鏈夊皬鐟曠柕,浣犱細:",
+                question: "网购商品有小瑕疵,你会:",
                 options: [
-                    "瀚岄夯鐑?鍑戝悎鐢?,
-                    "鐮旂┒娑堣垂鑰呮潈鐩?绀艰矊鑰屽己纭湴瑕佹眰琛ュ伩",
-                    "绔嬪埢瀹㈡湇鐙傝桨婊ョ偢鐩村埌瑙ｅ喅",
-                    "鍐欎竴鍗冨瓧璇勪环,鏈€鍚庡垹鎺夋病鍙?
+                    "嫌麻烦,凑合用",
+                    "研究消费者权益,礼貌而强硬地要求补偿",
+                    "立刻客服狂轰滥炸直到解决",
+                    "写一千字评价,最后删掉没发"
                 ]
             },
             {
-                question: "琚揩鍙傚姞鍥㈠缓,浣犵殑瑙掕壊閫氬父鏄?",
+                question: "被迫参加团建,你的角色通常是:",
                 options: [
-                    "韬插湪鏍戣崼涓嬬帺鎵嬫満",
-                    "鏆椾腑瑙傚療鍚屼簨鍏崇郴缃?,
-                    "涓诲姩鎻愯鐜╁艾鐨勬父鎴?,
-                    "鍋囪鑵圭棝鎻愬墠婧?
+                    "躲在树荫下玩手机",
+                    "暗中观察同事关系网",
+                    "主动提议玩尬的游戏",
+                    "假装腹痛提前溜"
                 ]
             },
             {
-                question: "瀛︿範鏂版妧鑳芥椂,浣犲鏄?",
+                question: "学习新技能时,你容易:",
                 options: [
-                    "涓夊ぉ鍚嶾"闅忕紭鍚"",
-                    "鎷嗚В鏂规硶璁?鏁堢巼纰惧帇鏃佷汉",
-                    "瀛﹀埌涓€鍗婂紑濮嬭嚜鍒涙悶绗戠帺娉?,
-                    "鎶ヤ簲涓繘闃剁彮,鍗峰埌涓撲笟绾?
+                    "三天后\"随缘吧\"",
+                    "拆解方法论,效率碾压旁人",
+                    "学到一半开始自创搞笑玩法",
+                    "报五个进阶班,卷到专业级"
                 ]
             },
             {
-                question: "鍚埌鍒汉鍢茬瑧浣犵殑鐖卞ソ,浣犱細:",
+                question: "听到别人嘲笑你的爱好,你会:",
                 options: [
-                    "\"鍝?浣犲紑蹇冨氨濂絓"",
-                    "浼橀泤绉戞櫘璇ョ埍濂界殑娣卞眰浠峰€?,
-                    "澶稿紶妯′豢瀵规柟鐖卞ソ骞跺槻绗戝洖鍘?,
-                    "娣卞鍐欓暱鏂囧弽椹?浠呰嚜宸卞彲瑙?
+                    "\"哦,你开心就好\"",
+                    "优雅科普该爱好的深层价值",
+                    "夸张模仿对方爱好并嘲笑回去",
+                    "深夜写长文反驳,仅自己可见"
                 ]
             },
             {
-                question: "鍛ㄦ湯涓婂崍閱掓潵鍙戠幇鍋滅數浜?浣犵涓€浠朵簨鏄?",
+                question: "周末上午醒来发现停电了,你第一件事是:",
                 options: [
-                    "缁х画鐫″埌鏈夌數",
-                    "鏌ョ淮淇數璇濄€佺敤鍏呯數瀹濈粰璺敱鍣ㄤ緵鐢?,
-                    "鍘诲挅鍟￠椤轰究閫涘叕鍥?,
-                    "鐒﹁檻:鎵嬫満娌＄數鎬庝箞鍔?宸ヤ綔鏂囦欢杩樻病淇濆瓨!"
+                    "继续睡到有电",
+                    "查维修电话、用充电宝给路由器供电",
+                    "去咖啡馆顺便逛公园",
+                    "焦虑:手机没电怎么办!工作文件还没保存!"
                 ]
             },
             {
-                question: "灏忕粍鍚堜綔鏈変汉鍒掓按,浣犱細:",
+                question: "小组合作有人划水,你会:",
                 options: [
-                    "鑷繁鍋氬畬,浣嗕笅娆￠伩寮€杩欎汉",
-                    "鏄庣‘鍒嗗伐骞惰缃埅姝㈡椂闂碄鍏ㄥ憳",
-                    "鍏紑璇碶"X鍚屽鐨勪换鍔℃垜甯綘鍒嗙粰鍚勪綅浜嗗摝\"",
-                    "鐔甯甌a鍋?鐒跺悗鍙戞湅鍙嬪湀鏆楄"
+                    "自己做完,但下次避开这人",
+                    "明确分工并设置截止时间@全员",
+                    "公开说\"X同学的任务我帮你分给各位了哦\"",
+                    "熬夜帮Ta做,然后发朋友圈暗讽"
                 ]
             },
             {
-                question: "鐪嬪埌\"璐㈠姟鑷敱鏀荤暐\"鏂囩珷,浣犻€氬父:",
+                question: "看到\"财务自由攻略\"文章,你通常:",
                 options: [
-                    "鏀惰棌,鐒跺悗姘歌繙涓嶇湅",
-                    "瀵规瘮鏁版嵁鏉ユ簮,鎬€鐤戞槸骞垮憡",
-                    "杞彂鍒扮兢閲孿"鍜变滑涔熻瘯璇?\"(涓夊ぉ鍚庡繕)",
-                    "璁ょ湡鍋氱瑪璁板苟寮€濮嬪埗瀹氫簲骞磋鍒?
+                    "收藏,然后永远不看",
+                    "对比数据来源,怀疑是广告",
+                    "转发到群里\"咱们也试试!\"(三天后忘)",
+                    "认真做笔记并开始制定五年计划"
                 ]
             },
             {
-                question: "闄岀敓浜哄悜浣犲€熸墜鏈烘墦鐢佃瘽,浣犱細:",
+                question: "陌生人向你借手机打电话,你会:",
                 options: [
-                    "閫掔粰瀵规柟浣嗙洴鐫€鐢?,
-                    "璇碶"鎴戝府浣犳嫧鍙?寮€鍏嶆彁\"",
-                    "鐖藉揩鍊熷嚭,鐢氳嚦鎻愰啋浠栨敞鎰忛槻楠?,
-                    "鑴戜腑闂繃100涓楠楀満鏅?鍍电‖鎷掔粷"
+                    "递给对方但盯着用",
+                    "说\"我帮你拨号,开免提\"",
+                    "爽快借出,甚至提醒他注意防骗",
+                    "脑中闪过100个被骗场景,僵硬拒绝"
                 ]
             },
             {
-                question: "閲嶅ぇ閫夋嫨鍓?濡傛崲宸ヤ綔),浣犳€?",
+                question: "重大选择前(如换工作),你总:",
                 options: [
-                    "鎶涚‖甯佸喅瀹?,
-                    "鍒桽WOT鍒嗘瀽琛ㄥ挩璇㈣祫娣变汉澹?,
-                    "璺熺潃鎰熻璧?閿欎簡灏卞綋浣撻獙浜虹敓",
-                    "澶辩湢鏌ラ亶鎵€鏈夌浉鍏冲笘瀛?
+                    "抛硬币决定",
+                    "列SWOT分析表咨询资深人士",
+                    "跟着感觉走,错了就当体验人生",
+                    "失眠查遍所有相关帖子"
                 ]
             },
             {
-                question: "鏈嬪弸璇碶"浣犳渶杩戣儢浜哱",浣犱細鍥?",
+                question: "朋友说\"你最近胖了\",你会回:",
                 options: [
-                    "\"鍡?鑳栫潃鐜╃帺\"",
-                    "\"鏍规嵁BMI鍏紡,鎴戜粛鍦ㄥ仴搴峰尯闂碶"",
-                    "\"浣犲彂鍨嬩篃寰堢壒鍒憿!\"",
-                    "鍥炲绉颁綋閲嶅苟emo涓€鍛?
+                    "\"嗯,胖着玩玩\"",
+                    "\"根据BMI公式,我仍在健康区间\"",
+                    "\"你发型也很特别呢!\"",
+                    "回家称体重并emo一周"
                 ]
             },
             {
-                question: "浣犺涓虹敓娲荤殑鏈川鏄?",
+                question: "你认为生活的本质是:",
                 options: [
-                    "涓€鍦轰笉蹇呭お璁ょ湡鐨勪綋楠?,
-                    "闇€瑕佹寔缁紭鍖栫殑绯荤粺",
-                    "瀵绘壘蹇箰鐨勮繃绋?,
-                    "鍏冲叧闅捐繃鍏冲叧杩?
+                    "一场不必太认真的体验",
+                    "需要持续优化的系统",
+                    "寻找快乐的过程",
+                    "关关难过关关过"
                 ]
             }
         ];
 
-        // 浜烘牸绫诲瀷鏄犲皠琛?
+        // 人格类型映射表
         const mapping = [
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '榛勭墰'],
-            ['姣旀牸', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鑺辨灊榧?],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '楦槾鍏?, '姣旀牸', '榛勭墰'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '榛勭墰'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鑺辨灊榧?],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '榛勭墰'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '榛勭墰'],
-            ['娴ｇ唺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '鐙哥尗', '鍒虹尙'],
-            ['鍗＄毊宸存媺', '娴ｇ唺', '姣旀牸', '鍒虹尙']
+            ['卡皮巴拉', '浣熊', '比格', '刺猬'],
+            ['卡皮巴拉', '浣熊', '狸猫', '黄牛'],
+            ['比格', '浣熊', '比格', '刺猬'],
+            ['卡皮巴拉', '浣熊', '比格', '花枝鼠'],
+            ['卡皮巴拉', '浣熊', '狸猫', '刺猬'],
+            ['卡皮巴拉', '鸭嘴兽', '比格', '黄牛'],
+            ['卡皮巴拉', '浣熊', '狸猫', '刺猬'],
+            ['卡皮巴拉', '浣熊', '狸猫', '黄牛'],
+            ['卡皮巴拉', '浣熊', '比格', '刺猬'],
+            ['卡皮巴拉', '浣熊', '狸猫', '刺猬'],
+            ['卡皮巴拉', '浣熊', '比格', '花枝鼠'],
+            ['卡皮巴拉', '浣熊', '比格', '黄牛'],
+            ['卡皮巴拉', '浣熊', '比格', '刺猬'],
+            ['卡皮巴拉', '浣熊', '比格', '刺猬'],
+            ['卡皮巴拉', '浣熊', '狸猫', '刺猬'],
+            ['卡皮巴拉', '浣熊', '比格', '黄牛'],
+            ['浣熊', '浣熊', '比格', '刺猬'],
+            ['卡皮巴拉', '浣熊', '比格', '刺猬'],
+            ['卡皮巴拉', '浣熊', '狸猫', '刺猬'],
+            ['卡皮巴拉', '浣熊', '比格', '刺猬']
         ];
 
-        // 浜烘牸鎻忚堪
+        // 人格描述
         const personalityData = {
-            '鍗＄毊宸存媺': {
-                emoji: '馃Λ',
-                title: '鍗＄毊宸存媺鈥斺€斾經绯绘憜鐑備汉',
-                description: '涓绘墦涓€涓竾浜嬮殢缂?鑳借汉缁濅笉绔?閬囦簨:绠椾簡銆侀兘琛屻€佹病鍏崇郴銆?
+            '卡皮巴拉': {
+                emoji: '🦫',
+                title: '卡皮巴拉——佛系摆烂人',
+                description: '主打一个万事随缘,能躺绝不站,遇事:算了、都行、没关系。'
             },
-            '娴ｇ唺': {
-                emoji: '馃',
-                title: '娴ｇ唺鈥斺€斾汉闂存竻閱掑笣',
-                description: '鐪嬬牬涓嶈鐮?鐞嗘櫤鍦ㄧ嚎涓嶆亱鐖辫剳,鍒╃泭寰楀け绠楀緱鏄庢槑鐧界櫧銆?
+            '浣熊': {
+                emoji: '🦝',
+                title: '浣熊——人间清醒帝',
+                description: '看破不说破,理智在线不恋爱脑,利益得失算得明明白白。'
             },
-            '姣旀牸': {
-                emoji: '馃悤',
-                title: '姣旀牸鈥斺€斿揩涔愬偦涔愪粩',
-                description: '娌″績娌¤偤娲荤潃涓嶇疮,绗戠偣鏋佷綆,鐑︽伡鑷姩杩囨护,涓绘墦涓€涓紑蹇冭嚦涓娿€?
+            '比格': {
+                emoji: '🐕',
+                title: '比格——快乐傻乐仔',
+                description: '没心没肺活着不累,笑点极低,烦恼自动过滤,主打一个开心至上。'
             },
-            '鍒虹尙': {
-                emoji: '馃',
-                title: '鍒虹尙鈥斺€旂簿绁炲唴鑰楀疂',
-                description: '鎯冲お澶氱潯澶皯,鍙嶅绾犵粨鑷垜鎷夋壇,鍐呭績鎴忔瘮鐢佃鍓ц繕瓒炽€?
+            '刺猬': {
+                emoji: '🦔',
+                title: '刺猬——精神内耗宝',
+                description: '想太多睡太少,反复纠结自我拉扯,内心戏比电视剧还足。'
             },
-            '鐙哥尗': {
-                emoji: '馃惐',
-                title: '鐙哥尗鈥斺€斾笉鏈嶅氨骞蹭緺',
-                description: '缁濅笉濮斿眻鑷繁,鏈変簨鐩存帴寮€鎬?涓绘墦涓€涓笉鍐呰€椼€佷笓澶栬€椼€?
+            '狸猫': {
+                emoji: '🐱',
+                title: '狸猫——不服就干侠',
+                description: '绝不委屈自己,有事直接开怼,主打一个不内耗、专外耗。'
             },
-            '榛勭墰': {
-                emoji: '馃悅',
-                title: '榛勭墰鈥斺€斿嵎鐜嬪鏂楁壒',
-                description: '鐢熷懡涓嶆伅鍐呭嵎涓嶆,鎼為挶鎼炰簨涓氱涓€,闂蹭笅鏉ヤ細鐒﹁檻銆?
+            '黄牛': {
+                emoji: '🐂',
+                title: '黄牛——卷王奋斗批',
+                description: '生命不息内卷不止,搞钱搞事业第一,闲下来会焦虑。'
             },
-            '鑺辨灊榧?: {
-                emoji: '馃悁',
-                title: '鑺辨灊榧犫€斺€旈€忔槑闅愯韩浜?,
-                description: '鑳藉彂鏂囧瓧涓嶈闊?鑳界嚎涓婁笉瑙侀潰,浜哄灏辨兂閬佸湴,绀炬亹鏈綋銆?
+            '花枝鼠': {
+                emoji: '🐀',
+                title: '花枝鼠——透明隐身人',
+                description: '能发文字不语音,能线上不见面,人多就想遁地,社恐本体。'
             },
-            '楦槾鍏?: {
-                emoji: '馃',
-                title: '楦槾鍏解€斺€旂嫭鍏蜂竴鏍间緺',
-                description: '鐭涚浘闆嗗悎浣?绋€鏈夌嫭鐗?绁炵浣庤皟,涓嶉福鍒欏凡,涓€楦ｆ儕浜?鐙竴鏃犱簩銆?
+            '鸭嘴兽': {
+                emoji: '🦆',
+                title: '鸭嘴兽——独具一格侠',
+                description: '矛盾集合体,稀有独特,神秘低调,不鸣则已,一鸣惊人,独一无二。'
             }
         };
 
-        // 鍏ㄥ眬鍙橀噺
+        // 全局变量
         let currentQuestion = 0;
         let answers = [];
 
-        // 椤甸潰鍔犺浇瀹屾垚鍚庡垵濮嬪寲
+        // 页面加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('椤甸潰鍔犺浇瀹屾垚');
+            console.log('页面加载完成');
             
-            // 鑾峰彇DOM鍏冪礌
+            // 获取DOM元素
             const startPage = document.getElementById('start-page');
             const testPage = document.getElementById('test-page');
             const resultPage = document.getElementById('result-page');
@@ -673,14 +673,14 @@
             const prevBtn = document.getElementById('prev-btn');
             const confirmBtn = document.getElementById('confirm-btn');
 
-            console.log('寮€濮嬫寜閽?', startBtn);
+            console.log('开始按钮:', startBtn);
             
-            // 褰撳墠閫変腑鐨勯€夐」
+            // 当前选中的选项
             let selectedOptionIndex = null;
 
-            // 寮€濮嬫祴璇?
+            // 开始测试
             startBtn.addEventListener('click', function() {
-                console.log('寮€濮嬫祴璇曡鐐瑰嚮');
+                console.log('开始测试被点击');
                 startPage.classList.remove('active');
                 testPage.classList.add('active');
                 currentQuestion = 0;
@@ -689,7 +689,7 @@
                 displayQuestion();
             });
 
-            // 涓婁竴棰?
+            // 上一题
             prevBtn.addEventListener('click', function() {
                 if (currentQuestion > 0) {
                     currentQuestion--;
@@ -700,7 +700,7 @@
                 }
             });
 
-            // 纭畾鎸夐挳
+            // 确定按钮
             confirmBtn.addEventListener('click', function() {
                 if (selectedOptionIndex !== null) {
                     answers[currentQuestion] = String.fromCharCode(65 + selectedOptionIndex);
@@ -716,18 +716,18 @@
                 }
             });
 
-            // 鏇存柊鎸夐挳鐘舵€?
+            // 更新按钮状态
             function updateButtons() {
-                // 涓婁竴棰樻寜閽細绗竴棰樻椂绂佺敤
+                // 上一题按钮：第一题时禁用
                 prevBtn.disabled = currentQuestion === 0;
                 
-                // 纭畾鎸夐挳锛氭湭閫夋嫨閫夐」鏃剁鐢?
+                // 确定按钮：未选择选项时禁用
                 confirmBtn.disabled = selectedOptionIndex === null;
             }
 
-            // 寮€濮嬫祴璇?
+            // 开始测试
             startBtn.addEventListener('click', function() {
-                console.log('寮€濮嬫祴璇曡鐐瑰嚮');
+                console.log('开始测试被点击');
                 startPage.classList.remove('active');
                 testPage.classList.add('active');
                 currentQuestion = 0;
@@ -735,55 +735,55 @@
                 displayQuestion();
             });
 
-            // 閲嶆柊娴嬭瘯
+            // 重新测试
             retryBtn.addEventListener('click', function() {
                 resultPage.classList.remove('active');
                 startPage.classList.add('active');
             });
 
-            // 鍒嗕韩缁撴灉
+            // 分享结果
             shareBtn.addEventListener('click', function() {
                 const personalityType = getPersonalityType(answers);
                 const personality = personalityData[personalityType];
-                const text = `鎴戠殑鍔ㄧ墿浜烘牸鏄? ${personality.emoji} ${personality.title}\n${personality.description}\n\n鏉ユ祴娴嬩綘鐨勫姩鐗╀汉鏍煎惂!`;
+                const text = `我的动物人格是: ${personality.emoji} ${personality.title}\n${personality.description}\n\n来测测你的动物人格吧!`;
                 
                 if (navigator.share) {
                     navigator.share({
-                        title: '鎴戠殑鍔ㄧ墿浜烘牸娴嬭瘯缁撴灉',
+                        title: '我的动物人格测试结果',
                         text: text,
                         url: window.location.href
                     });
                 } else {
                     navigator.clipboard.writeText(text).then(() => {
-                        alert('缁撴灉宸插鍒跺埌鍓创鏉?');
+                        alert('结果已复制到剪贴板!');
                     }).catch(() => {
                         alert(text);
                     });
                 }
             });
 
-            // 鏄剧ず闂
+            // 显示问题
             function displayQuestion() {
                 const question = questions[currentQuestion];
                 
-                // 鏇存柊杩涘害鏉?
+                // 更新进度条
                 const progress = ((currentQuestion) / questions.length) * 100;
                 progressFill.style.width = progress + '%';
                 currentQuestionSpan.textContent = currentQuestion + 1;
                 
-                // 鏄剧ず闂
+                // 显示问题
                 questionText.textContent = question.question;
                 
-                // 娓呯┖閫夐」瀹瑰櫒
+                // 清空选项容器
                 optionsContainer.innerHTML = '';
                 
-                // 鍒涘缓閫夐」鎸夐挳
+                // 创建选项按钮
                 question.options.forEach((option, index) => {
                     const button = document.createElement('button');
                     button.className = 'option-btn';
                     button.textContent = String.fromCharCode(65 + index) + '. ' + option;
                     
-                    // 濡傛灉宸茬粡閫夋嫨杩?鏄剧ず閫変腑鐘舵€?
+                    // 如果已经选择过,显示选中状态
                     if (selectedOptionIndex === index) {
                         button.classList.add('selected');
                     }
@@ -797,11 +797,11 @@
                 updateButtons();
             }
 
-            // 閫夋嫨绛旀
+            // 选择答案
             function selectAnswer(index) {
                 selectedOptionIndex = index;
                 
-                // 鏇存柊閫変腑鐘舵€?
+                // 更新选中状态
                 const allOptions = optionsContainer.querySelectorAll('.option-btn');
                 allOptions.forEach((btn, i) => {
                     if (i === index) {
@@ -814,26 +814,26 @@
                 updateButtons();
             }
 
-            // 鏄剧ず缁撴灉
+            // 显示结果
             function showResult() {
                 testPage.classList.remove('active');
                 resultPage.classList.add('active');
                 
-                // 璁＄畻浜烘牸绫诲瀷
+                // 计算人格类型
                 const personalityType = getPersonalityType(answers);
                 const personality = personalityData[personalityType];
                 
-                // 鏄剧ず缁撴灉
+                // 显示结果
                 resultEmoji.textContent = personality.emoji;
                 resultTitle.textContent = personality.title;
                 resultDescription.textContent = personality.description;
             }
 
-            // 鑾峰彇浜烘牸绫诲瀷
+            // 获取人格类型
             function getPersonalityType(answers) {
                 const count = {
-                    "鍗＄毊宸存媺": 0, "娴ｇ唺": 0, "姣旀牸": 0, "鍒虹尙": 0,
-                    "鐙哥尗": 0, "榛勭墰": 0, "鑺辨灊榧?: 0, "楦槾鍏?: 0
+                    "卡皮巴拉": 0, "浣熊": 0, "比格": 0, "刺猬": 0,
+                    "狸猫": 0, "黄牛": 0, "花枝鼠": 0, "鸭嘴兽": 0
                 };
                 
                 answers.forEach((ans, index) => {
@@ -853,7 +853,7 @@
                     }
                 }
                 
-                return maxTypes.length > 1 ? "楦槾鍏? : maxTypes[0];
+                return maxTypes.length > 1 ? "鸭嘴兽" : maxTypes[0];
             }
         });
     </script>
